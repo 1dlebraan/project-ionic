@@ -1,0 +1,19 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+
+<ion-modal [isOpen]="showGlobalNotif" cssClass="centered-modal">
+  <ng-template>
+    <div class="notif-card">
+      <ion-icon name="notifications-outline" class="notif-icon"></ion-icon>
+      <h2 class="notif-title">Saatnya Masuk!</h2>
+      <p class="notif-message">
+        Silakan masuk ke ruangan dokter sekarang untuk pemeriksaan.
+      </p>
+      <ion-button expand="block" class="notif-btn" (click)="closeGlobalNotif()">
+        Oke, Saya Masuk
+      </ion-button>
+    </div>
+  </ng-template>
+</ion-modal>
+
+</ion-app>

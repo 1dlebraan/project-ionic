@@ -1,0 +1,110 @@
+ion-content {
+  --background: #e0f7fb;
+}
+
+.container {
+  height: 100%;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #72caee;
+  padding: 15px 10px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.header img {
+  height: 100px;
+}
+
+.header-title p {
+  margin: 0;
+  color: black;
+  font-size: 14px;
+}
+
+.icon-header ion-icon {
+  font-size: 40px;
+  margin-left: 10px;
+  color: white;
+  filter: drop-shadow(7px 7px 10px rgba(0, 0, 0, 0.4));
+  padding: 4px;
+}
+.footer-card {
+  margin: 40px auto 20px;
+  padding: 8px 30px;
+  background-color: white;
+  color: #007bff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  margin-top: 130px;
+}
+.edit-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+ion-item {
+  margin-bottom: 20px;
+  --background: white;
+  border-radius: 10px;
+  --border-radius: 30px;
+  --padding-start: 12px;
+  --detail-icon-color: #333;
+  --highlight-color-focused: #2791c9;
+  --color: #333;
+
+  ::part(native) {
+    color: #333 !important;
+  }
+}
+
+ion-datetime.styled-datetime {
+  --background: #ffffff;
+  --color: #333; /* warna teks saat tanggal sudah dipilih */
+  --placeholder-color: #aaa;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --border-radius: 10px;
+  --border: 1px solid #ccc;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 16px;
+  border-radius: 10px; /* untuk backup browser biasa */
+  background: #fff; /* untuk fallback di non-shadow DOM */
+}
+
+/* Styling hari-hari di dalam kalender */
+ion-datetime::part(calendar-day) {
+  color: black;
+}
+
+ion-datetime::part(calendar-day-disabled) {
+  color: #ccc;
+}
+
+ion-datetime::part(calendar-day-active) {
+  color: white;
+  background: #007bff;
+  border-radius: 50%;
+}
+
+/* Placeholder styling fallback (jika placeholder-color tidak bekerja) */
+ion-datetime::part(native) {
+  color: #aaa;
+}

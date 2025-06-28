@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <img src="assets/icon/logo.png" alt="logo" routerLink="/menu" style="cursor: pointer;">
+    <div class="header-title">
+      <p style="font-size: 1.5em; color: #ffff"><strong>Status Antrian</strong></p>
+    </div>
+    <div class="icon-header" style="margin-left: auto;">
+      <ion-icon
+        name="log-out-outline"
+        (click)="logoutConfirm()"
+        style="cursor: pointer;">
+      </ion-icon>
+    </div>
+  </div>
+  <div class="container">
+  <div *ngFor="let item of riwayatAntrian" class="history-card">
+    <div class="info-row">
+      <span class="label">No Antrian:</span>
+      <span class="value">{{ item.no_antrian }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Poli:</span>
+      <span class="value">{{ item.poli_nama }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Nama Pasien:</span>
+      <span class="value">{{ item.pasien_nama }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Status:</span>
+      <span class="value" [ngClass]="{
+        'status-lengkap': item.status_antrian === 'selesai',
+        'status-batal': item.status_antrian === 'batal',
+        'status-menunggu': item.status_antrian === 'menunggu'
+      }">{{ item.status_antrian }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Waktu:</span>
+      <span class="value">{{ item.waktu }}</span>
+    </div>
+  </div>
+
+  <div *ngIf="riwayatAntrian.length === 0">
+    <p style="text-align: center; margin-top: 20px;">Belum ada riwayat antrian.</p>
+  </div>
+
+  <div class="footer-card">© SEHATIN</div>
+</div>
+
+</ion-content>

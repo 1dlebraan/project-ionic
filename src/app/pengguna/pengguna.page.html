@@ -1,0 +1,61 @@
+<ion-header [translucent]="true"> </ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <img
+      src="assets/icon/logo.png"
+      alt="logo"
+      routerLink="/menu"
+      style="cursor: pointer"
+    />
+    <div class="header-title">
+      <p style="font-size: 1.5em; margin-bottom: 5px; color: #ffffff">
+        Profile
+      </p>
+    </div>
+    <div class="icon-header" style="margin-left: auto">
+      <ion-icon
+        name="log-out-outline"
+        (click)="logoutConfirm()"
+        style="cursor: pointer"
+      >
+      </ion-icon>
+    </div>
+  </div>
+  <div class="container">
+    <div class="profile-icon-wrapper">
+      <ion-icon name="person-circle-outline" class="profile-icon"></ion-icon>
+    </div>
+    <!-- Pastikan userData sudah dimuat sebelum menampilkannya -->
+    <div class="profile-card" *ngIf="userData">
+      <p>A</p>
+      <h2 class="profile-name">{{ userData.name }}</h2>
+      <p class="profile-sub">{{ userData.email }}</p>
+
+      <div class="info-row">
+        <span class="label">NIK</span>
+        <span class="value">{{ userData.nik }}</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Tempat Tanggal Lahir</span>
+        <span class="value"
+          >{{ userData.tempat_lahir }}, {{ formattedTanggalLahir }}</span
+        >
+      </div>
+      <div class="info-row">
+        <span class="label">Jenis Kelamin</span>
+        <span class="value">{{ userData.jenis_kelamin }}</span>
+      </div>
+      <div class="info-row" *ngIf="userData.alamat">
+        <span class="label">Alamat</span>
+        <span class="value">{{ userData.alamat }}</span>
+      </div>
+
+      <ion-button expand="block" color="primary" (click)="editProfile()"
+        >Edit Profil</ion-button
+      >
+    </div>
+    <!-- Tampilkan pesan loading atau data tidak ada jika userData belum dimuat -->
+    <div *ngIf="!userData" class="loading-message">Memuat data profil...</div>
+  </div>
+</ion-content>

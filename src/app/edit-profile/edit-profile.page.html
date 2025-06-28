@@ -1,0 +1,112 @@
+<ion-header [translucent]="true"> </ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <img
+      src="assets/icon/logo.png"
+      alt="logo"
+      routerLink="/menu"
+      style="cursor: pointer"
+    />
+    <div class="header-title">
+      <p style="font-size: 1.5em; margin-bottom: 5px; color: #ffffff">
+        Profile
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Form Edit Profil -->
+    <div class="edit-card" *ngIf="userData">
+      <h2 style="color: black"><strong>Edit Profile</strong></h2>
+
+      <!-- Nama -->
+      <ion-item>
+        <ion-label position="floating">Nama Lengkap</ion-label>
+        <ion-input type="text" [(ngModel)]="userData.name" required></ion-input>
+      </ion-item>
+
+      <!-- Email -->
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input
+          type="email"
+          [(ngModel)]="userData.email"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <!-- NIK -->
+      <ion-item>
+        <ion-label position="floating">NIK</ion-label>
+        <ion-input type="text" [(ngModel)]="userData.nik" required></ion-input>
+      </ion-item>
+
+      <!-- Tempat Lahir -->
+      <ion-item>
+        <ion-label position="floating">Tempat Lahir</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="userData.tempat_lahir"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <!-- Tanggal Lahir -->
+      <ion-item>
+        <ion-label position="floating">Tanggal Lahir</ion-label>
+        <ion-datetime
+          presentation="date"
+          display-format="YYYY-MM-DD"
+          picker-format="YYYY-MM-DD"
+          [(ngModel)]="userData.tanggal_lahir"
+          (ionChange)="onTanggalLahirChange($event)"
+          class="styled-datetime"
+          required
+        ></ion-datetime>
+      </ion-item>
+
+      <!-- Jenis Kelamin -->
+      <ion-item>
+        <ion-label position="floating">Jenis Kelamin</ion-label>
+        <ion-select
+          [(ngModel)]="userData.jenis_kelamin"
+          interface="alert  "
+          placeholder="Pilih"
+          required
+        >
+          <ion-select-option value="Laki-Laki">Laki-Laki</ion-select-option>
+          <ion-select-option value="Perempuan">Perempuan</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Alamat -->
+      <ion-item>
+        <ion-label position="floating">Alamat</ion-label>
+        <ion-textarea
+          [(ngModel)]="userData.alamat"
+          rows="3"
+          auto-grow
+        ></ion-textarea>
+      </ion-item>
+
+      <!-- Tombol Aksi -->
+      <ion-button
+        expand="block"
+        color="primary"
+        (click)="onSaveProfile()"
+        class="mt-4"
+      >
+        Simpan Perubahan
+      </ion-button>
+      <ion-button expand="block" color="light" (click)="onCancelEdit()">
+        Batal
+      </ion-button>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="!userData" class="loading-message">
+      Memuat form edit profil...
+    </div>
+  </div>
+</ion-content>

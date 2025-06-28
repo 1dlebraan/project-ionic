@@ -1,0 +1,63 @@
+<ion-header [translucent]="true"> </ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <img
+      src="assets/icon/logo.png"
+      alt="logo"
+      routerLink="/menu"
+      style="cursor: pointer"
+    />
+    <div class="header-title">
+      
+      <p style="font-size: 1.1em; margin-bottom: 3px">Selamat datang,</p>
+      <p style="font-size: 1.1em; margin-bottom: 3px">
+        <ion-text color="primary"><strong>{{ userName }}</strong></ion-text>
+      </p>
+      <p style="font-size: 0.9em; color: #ffffff">
+        Siap untuk hidup lebih sehat bersama kami?
+      </p>
+    </div>
+    <div class="icon-header" style="margin-left: auto">
+      <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
+      <ion-icon
+        name="log-out-outline"
+        (click)="logoutConfirm()"
+        style="cursor: pointer"
+      >
+      </ion-icon>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card-grid">
+      <div class="card-item" routerLink="/pengguna">
+        <div class="card-box">
+          <img src="assets/icon/profile.png" alt="logo" />
+        </div>
+        <p class="card-label">Profile</p>
+      </div>
+
+      <div class="card-item" routerLink="/pilih-poli">
+        <div class="card-box">
+          <img src="assets/icon/poli.png" alt="logo" />
+        </div>
+        <p class="card-label">Daftar Poli</p>
+      </div>
+
+      <div class="card-item" routerLink="/status-antrian">
+        <div class="card-box">
+          <img src="assets/icon/status.png" alt="logo" />
+        </div>
+        <p class="card-label">Status Antrian</p>
+      </div>
+
+      <div class="card-item" routerLink="/history">
+        <div class="card-box">
+          <img src="assets/icon/riwayat.png" alt="logo" />
+        </div>
+        <p class="card-label">Riwayat Antrian</p>
+      </div>
+    </div>
+    <div class="footer-card">© SEHATIN</div>
+  </div>
+</ion-content>

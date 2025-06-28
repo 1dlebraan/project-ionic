@@ -1,0 +1,115 @@
+.login-bg {
+  --background: #e0f7fb;
+}
+
+.login-container {
+  padding: 20px;
+  margin-top: 50px;
+}
+
+h2 {
+  text-align: center;
+  color: black;
+  margin-bottom: 100px;
+  font-size: 40px;
+  margin-top: 150px;
+}
+
+ion-item {
+  margin-bottom: 20px;
+  --background: white;
+  border-radius: 10px;
+  --border-radius: 30px;
+  --padding-start: 12px;
+}
+
+ion-input {
+  // Mengatur warna teks untuk input yang diketik oleh pengguna
+  --color: var(--ion-color-step-950, #000) !important; /* Warna teks utama */
+  --placeholder-color: var(
+    --ion-color-step-700,
+    #555
+  ) !important; /* Warna teks placeholder */
+  --highlight-color: var(
+    --ion-color-primary,
+    #3880ff
+  ); /* Warna garis bawah/sorot saat fokus */
+
+  // Aturan spesifik untuk elemen native di dalam Shadow DOM
+  &::part(native) {
+    color: var(--ion-color-step-950, #000) !important;
+    -webkit-text-fill-color: var(
+      --ion-color-step-950,
+      #000
+    ) !important; // Penting untuk Safari/autofill
+    opacity: 1 !important; // Memastikan tidak ada opacity yang menyembunyikan
+  }
+
+  // Aturan untuk placeholder (redundant jika --placeholder-color di atas berfungsi, tapi aman)
+  &::placeholder {
+    color: var(--ion-color-step-700, #555) !important;
+    opacity: 1 !important;
+  }
+  &::-webkit-input-placeholder {
+    color: var(--ion-color-step-700, #555) !important;
+    opacity: 1 !important;
+  }
+  &::-moz-placeholder {
+    color: var(--ion-color-step-700, #555) !important;
+    opacity: 1 !important;
+  }
+  &:-ms-input-placeholder {
+    color: var(--ion-color-step-700, #555) !important;
+    opacity: 1 !important;
+  }
+}
+
+.btn-login {
+  --background: #72caee;
+  color: white;
+  font-weight: bold;
+  --border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  max-width: 200px;
+  margin: 10px auto;
+  display: block;
+}
+
+.link-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.forgot-link {
+  color: #007bff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.register-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #000;
+}
+
+.register-text a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.input-item {
+  margin-bottom: 20px;
+  --background: white;
+  --border-radius: 25px;
+  border-radius: 16px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --highlight-color-focused: #72caee;
+}
+ion-label {
+  color: #000 !important;
+  font-weight: 500;
+}

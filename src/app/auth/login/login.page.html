@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true" class="login-bg">
+  <div class="login-container">
+    <h2><strong>Log in</strong></h2>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <div class="link-row">
+      <a (click)="router.navigateByUrl('/auth/reset-pw')" class="forgot-link"
+        >Lupa Password?</a
+      >
+    </div>
+
+    <ion-button expand="block" class="btn-login" (click)="onLogin()"
+      >Login</ion-button
+    >
+
+    <div class="register-text">
+      Belum punya akun?
+      <a (click)="router.navigateByUrl('/register')">Daftar sekarang</a>
+    </div>
+  </div>
+</ion-content>

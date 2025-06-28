@@ -1,0 +1,106 @@
+<ion-content [fullscreen]="true" class="login-bg">
+  <div class="login-container">
+    <h2><strong>Register</strong></h2>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">NIK</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="nik"
+        name="nik"
+        class="dark-text-input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Nama Lengkap</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="name"
+        name="name"
+        class="dark-text-input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Tempat Lahir</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="tempat_lahir"
+        name="tempat_lahir"
+        class="dark-text-input"
+      ></ion-input>
+    </ion-item>
+
+    <label for="tanggal" color="black">Tanggal Lahir</label>
+    <ion-datetime
+      presentation="date"
+      [value]="tanggal_lahir"
+      (ionChange)="onTanggalLahirChange($event)"
+      class="styled-datetime"
+    ></ion-datetime>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Jenis Kelamin</ion-label>
+      <ion-select
+        style="color: black"
+        [(ngModel)]="jenis_kelamin"
+        interface="alert"
+        name="jenis_kelamin"
+        class="dark-text-input"
+      >
+        <!-- ✅ PERBAIKAN: Mengirim nilai ENUM string lengkap -->
+        <ion-select-option value="Laki-Laki">Laki-laki</ion-select-option>
+        <ion-select-option value="Perempuan">Perempuan</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Alamat</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="alamat"
+        name="alamat"
+        class="dark-text-input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        class="dark-text-input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        class="dark-text-input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Konfirmasi Password</ion-label>
+      <ion-input
+        type="password"
+        [(ngModel)]="password_confirmation"
+        name="password_confirmation"
+        class="dark-text-input"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="btn-login" (click)="onRegister()"
+      >Daftar</ion-button
+    >
+
+    <div class="register-text">
+      Sudah punya akun? <a href="/login">Login sekarang</a>
+    </div>
+  </div>
+</ion-content>

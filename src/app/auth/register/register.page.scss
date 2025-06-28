@@ -1,0 +1,121 @@
+.login-bg {
+  --background: #e0f7fb;
+}
+
+.login-container {
+  padding: 20px;
+  margin-top: 50px;
+}
+
+h2 {
+  text-align: center;
+  color: black;
+  margin-bottom: 100px;
+  font-size: 40px;
+}
+
+ion-item {
+  margin-bottom: 20px;
+  --background: white;
+  border-radius: 10px;
+  --border-radius: 30px;
+  --padding-start: 12px;
+  --detail-icon-color: #333;
+  --highlight-color-focused: #2791c9;
+  --color: #333;
+
+  ::part(native) {
+    color: #333 !important;
+  }
+}
+
+ion-input.dark-text-input,
+ion-select.dark-text-input {
+  --text-color: #333;
+}
+
+ion-select-option {
+  color: #333 !important;
+  ::part(text) {
+    color: #333 !important;
+  }
+}
+
+.btn-login {
+  --background: #72caee;
+  color: white;
+  font-weight: bold;
+  --border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  max-width: 200px;
+  margin: 10px auto;
+  display: block;
+}
+
+.link-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.forgot-link {
+  color: #007bff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.register-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #000;
+}
+
+.register-text a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+ion-datetime.styled-datetime {
+  --background: #ffffff;
+  --color: #333; /* warna teks saat tanggal sudah dipilih */
+  --placeholder-color: #aaa;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --border-radius: 10px;
+  --border: 1px solid #ccc;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 16px;
+  border-radius: 10px; /* untuk backup browser biasa */
+  background: #fff; /* untuk fallback di non-shadow DOM */
+}
+
+/* Styling hari-hari di dalam kalender */
+ion-datetime::part(calendar-day) {
+  color: black;
+}
+
+ion-datetime::part(calendar-day-disabled) {
+  color: #ccc;
+}
+
+ion-datetime::part(calendar-day-active) {
+  color: white;
+  background: #007bff;
+  border-radius: 50%;
+}
+
+/* Placeholder styling fallback (jika placeholder-color tidak bekerja) */
+ion-datetime::part(native) {
+  color: #aaa;
+}
+
+ion-label {
+  color: #000 !important;
+  font-weight: 500;
+}

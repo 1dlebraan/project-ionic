@@ -1,0 +1,122 @@
+ion-content {
+  --background: #E0F7FB;
+}
+
+.container {
+  height: 100%;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color:#72CAEE;
+  padding: 15px 10px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.header img {
+  height: 100px;
+}
+
+.header-title p {
+  margin: 0;
+  color: black;
+  font-size: 14px;
+}
+
+.icon-header ion-icon {
+  font-size: 40px;
+  margin-left: 10px;
+  color: white;
+  filter: drop-shadow(7px 7px 10px rgba(0, 0, 0, 0.4));
+  padding: 4px;
+}
+
+.form-daftar {
+  background-color: transparent;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.form-daftar h2 {
+  margin-top: 0;
+  color: #007BFF;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.form-daftar label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-daftar select,
+.form-daftar input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.btn-daftar {
+  width: 100%;
+  padding: 12px;
+  background-color: #72CAEE;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-daftar:hover {
+  background-color: #0056b3;
+}
+.form-daftar select,
+.form-daftar input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #fff;
+  color: black;
+}
+ion-datetime.styled-datetime {
+  --background: #ffffff;
+  --color: #333;
+  --placeholder-color: #aaa;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --border-radius: 10px;
+  --border: 1px solid #ccc;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 16px;
+
+}
+ion-datetime::part(calendar-day) {
+  color: black;
+}
+
+ion-datetime::part(calendar-day-disabled) {
+  color: #ccc;
+}
+
+ion-datetime::part(calendar-day-active) {
+  color: white;
+  background: #007BFF;
+  border-radius: 50%;
+}

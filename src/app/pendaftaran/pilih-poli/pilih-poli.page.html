@@ -1,0 +1,109 @@
+<ion-header [translucent]="true"> </ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <img
+      src="assets/icon/logo.png"
+      alt="logo"
+      routerLink="/menu"
+      style="cursor: pointer"
+    />
+    <div class="header-title">
+      <p style="font-size: 1.5em; color: #ffff"><strong>Daftar Antrian</strong></p>
+    </div>
+    <div class="icon-header" style="margin-left: auto">
+      <ion-icon
+        name="log-out-outline"
+        (click)="logoutConfirm()"
+        style="cursor: pointer"
+      ></ion-icon>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="form-daftar">
+      <!-- POLI -->
+      <ion-item>
+        <ion-label position="stacked">Pilih Poli</ion-label>
+        <ion-select
+          [(ngModel)]="selectedPoliId"
+          placeholder="Pilih Poli"
+          (ionChange)="onPoliChange()"
+        >
+          <ion-select-option *ngFor="let poli of poliList" [value]="poli.id">
+            {{ poli.nama_poli }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- TANGGAL -->
+      <p></p>
+      <label for="tanggal">Tanggal Kunjungan</label>
+      <ion-datetime
+        presentation="date"
+        [value]="selectedDate"
+        (ionChange)="onDateChange($event)"
+        [isDateEnabled]="isDateEnabled"
+        [min]="tanggalTersedia[0]?.tanggal"
+        [max]="tanggalTersedia[tanggalTersedia.length - 1]?.tanggal"
+      ></ion-datetime>
+
+      <p></p>
+
+      <ion-text color="danger" *ngIf="selectedDate && sesiList.length === 0">
+  <p>Tidak ada sesi tersedia untuk tanggal ini.</p>
+</ion-text>
+
+      <!-- SESI -->
+      <ion-item>
+        <ion-label position="stacked">Pilih Sesi</ion-label>
+        <ion-text color="medium" *ngIf="selectedJadwal">
+  <p>
+    Dipilih: {{ selectedJadwal.nama_sesi }} ({{ selectedJadwal.jam_mulai }} - {{ selectedJadwal.jam_selesai }})
+  </p>
+</ion-text>
+
+        <ion-select
+          [(ngModel)]="selectedJadwal"
+          placeholder="Pilih Sesi"
+          (ionChange)="onSesiChange()"
+        >
+          <ion-select-option
+            *ngFor="let sesi of sesiList"
+            [value]="sesi"
+          >
+            {{ sesi.jam_mulai }} - {{ sesi.jam_selesai }} (Kuota: {{ sesi.kuota
+            }}, Tersisa: {{ sesi.tersisa }})
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+
+
+      <!-- JAM LAYANAN -->
+      <ion-item *ngIf="jamTersedia.length > 0">
+        <ion-label position="stacked">Pilih Jam Layanan</ion-label>
+        <ion-select
+          [(ngModel)]="selectedJam"
+          placeholder="Pilih Jam"
+        >
+          <ion-select-option
+            *ngFor="let jam of jamTersedia"
+            [value]="jam"
+          >
+            {{ jam }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <p></p>
+      <p></p>
+
+      <!-- DAFTAR -->
+      <ion-button expand="block" (click)="daftarAntrian()"
+  [disabled]="!selectedPoliId || !selectedDate || !selectedJadwal || !selectedJam">
+  Daftar Antrian
+</ion-button>
+
+    </div>
+  </div>
+</ion-content>

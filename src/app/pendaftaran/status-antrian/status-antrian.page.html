@@ -1,0 +1,112 @@
+<ion-header [translucent]="true"></ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <img
+      src="assets/icon/logo.png"
+      alt="logo"
+      routerLink="/menu"
+      style="cursor: pointer"
+    />
+    <div class="header-title">
+      <p style="font-size: 1.5em; color: #ffff"><strong>Status Antrian</strong></p>
+    </div>
+    <div class="icon-header" style="margin-left: auto;">
+      <ion-icon
+        name="log-out-outline"
+        (click)="logoutConfirm()"
+        style="cursor: pointer"
+      ></ion-icon>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- SPINNER saat loading -->
+    <div class="loading-container" *ngIf="loading">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Memuat data antrian...</p>
+    </div>
+
+    <!-- DATA antrian atau kosong -->
+    <div *ngIf="!loading">
+      <div class="detail-card">
+        <div class="info-row">
+          <span class="label">No Antrian:</span>
+          <span class="value"
+            >{{ antrian?.nomor_antrian ?? 'Belum ambil antrian' }}</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="label">Poli:</span>
+          <span class="value"
+            >{{ antrian?.poli?.nama_poli ?? 'Belum ambil antrian' }}</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="label">Nama Pasien:</span>
+          <span class="value"
+            >{{ antrian?.pasien?.name ?? 'Belum ambil antrian' }}</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="label">Status:</span>
+          <span
+            class="value"
+            [ngClass]="{
+                  'status-menunggu': antrian?.status_antrian === 'menunggu',
+                  'status-dipanggil': antrian?.status_antrian === 'dipanggil',
+                  'status-selesai': antrian?.status_antrian === 'selesai',
+                  'status-batal': antrian?.status_antrian === 'batal',
+                  'status-terdaftar': antrian?.status_antrian === 'terdaftar'
+                }"
+          >
+            {{ antrian?.status_antrian ?? 'Belum ambil antrian' }}
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="label">Tanggal Antrian:</span>
+          <span class="value"
+            >{{ antrian?.tanggal_antrian ?
+            formatTanggal(antrian.tanggal_antrian) : 'Belum ambil antrian'
+            }}</span
+          >
+        </div>
+        <div class="info-row">
+          <span class="label">Estimasi Panggilan:</span>
+          <span class="value"
+            >{{ antrian?.estimasi_panggilan ?? 'Belum ambil antrian' }}</span
+          >
+        </div>
+
+        <div class="info-row" *ngIf="antrian?.status_antrian === 'terdaftar'">
+          <p style="color: orange; text-align:justify">
+            Anda sudah terdaftar. Silakan konfirmasi kehadiran ke petugas pada
+            tanggal {{ formatTanggal(antrian.tanggal_antrian) }}.
+          </p>
+        </div>
+
+        <div class="info-row" *ngIf="antrian?.status_antrian === 'batal'">
+          <p style="color: red; text-align:justify">
+            Antrian Anda telah dibatalkan karena tidak konfirmasi kehadiran.
+          </p>
+        </div>
+
+        <!-- QR Code hanya jika ada nomor antrian -->
+        <div
+          class="info-row"
+          *ngIf="antrian?.nomor_antrian"
+          style="text-align: center; width: 100%; margin-top: 10px"
+        >
+          <qrcode
+            [qrdata]="antrian.nomor_antrian"
+            [width]="200"
+            [errorCorrectionLevel]="'M'"
+          ></qrcode>
+          <p style="margin-top: 5px">Scan untuk verifikasi</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-card">© SEHATIN</div>
+  </div>
+</ion-content>
