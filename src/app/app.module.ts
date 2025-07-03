@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { JwtInterceptor } from './interceptors/jwt.interceptor'; // ✅ TAMBAH: Import JwtInterceptor Anda
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 
@@ -17,6 +18,14 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor'; // ✅ TAMBAH: 
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    JwtModule.forRoot({
+  config: {
+    tokenGetter: () => {
+      return localStorage.getItem('token');  // atau key yang kamu pakai
+    }
+  }
+}),
+
     
   ],
 

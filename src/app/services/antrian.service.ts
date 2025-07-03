@@ -21,7 +21,7 @@ export class AntrianService {
       this.pollingSub.unsubscribe(); // hentikan polling lama kalau ada
     }
 
-    this.pollingSub = interval(5000)
+    this.pollingSub = interval(15000)
       .pipe(
         switchMap(() => this.getStatusAntrian())
       )

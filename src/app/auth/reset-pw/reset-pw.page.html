@@ -4,9 +4,27 @@
 
     <ion-item class="input-item">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="email" required></ion-input>
     </ion-item>
 
-    <ion-button expand="block" class="btn-login">Login</ion-button>
+    <ion-item class="input-item">
+      <ion-label position="floating">Password Baru</ion-label>
+      <ion-input type="password" [(ngModel)]="password" required></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label position="floating">Konfirmasi Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password_confirmation" required></ion-input>
+    </ion-item>
+    
+
+    <ion-button expand="block" class="btn-login" (click)="resetPassword()" [disabled]="loading">
+      {{ loading ? 'Memproses...' : 'Reset Password' }}
+    </ion-button>
+    <div class="link-row">
+      <a (click)="goToLogin()">kembali ke halaman login</a>
+    </div>
+
+    
   </div>
 </ion-content>

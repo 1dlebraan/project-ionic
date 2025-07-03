@@ -123,6 +123,20 @@ export class AuthService {
     );
   }
 
+  resetPassword(email: string, password: string, password_confirmation: string): Observable<any> {
+  return this.http.post<any>(`${this.API_URL}/api/auth/reset-pw`, {
+    email,
+    password,
+    password_confirmation
+  }).pipe(
+    catchError((error) => {
+      console.error('Reset password failed:', error);
+      return throwError(() => error);
+    })
+  );
+}
+
+
   getProfile(): Observable<any> {
     return from(this.getToken()).pipe(
       switchMap((token) => {

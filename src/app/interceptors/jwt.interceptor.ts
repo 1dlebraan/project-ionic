@@ -17,9 +17,13 @@ export class JwtInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const isApiUrl = request.url.startsWith(environment.apiUrl);
 
+    // ✅ Tambah pengecualian auth request di sini
+    const isAuthRequest =
+      request.url.endsWith('/login') || request.url.endsWith('/register');
+
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
-        if (token && isApiUrl) {
+        if (token && isApiUrl && !isAuthRequest) {
           request = request.clone({
             setHeaders: {
               Authorization: `Bearer ${token}`,
