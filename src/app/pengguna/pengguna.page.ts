@@ -67,7 +67,7 @@ export class PenggunaPage implements OnInit {
         'Anda belum login. Silakan login terlebih dahulu.',
         'danger'
       );
-      this.navCtrl.navigateRoot('/auth/login'); // Menggunakan navigateRoot agar tidak bisa kembali dengan tombol back
+      this.navCtrl.navigateRoot('/login'); // Menggunakan navigateRoot agar tidak bisa kembali dengan tombol back
     }
   }
 
@@ -91,14 +91,14 @@ export class PenggunaPage implements OnInit {
       this.authService.logout().subscribe({
         next: () => {
           this.presentToast('Anda telah berhasil logout.', 'success');
-          this.router.navigateByUrl('/auth/login', { replaceUrl: true });
+          this.router.navigateByUrl('/login', { replaceUrl: true });
         },
         error: (err) => {
           const errorMessage =
             err.error?.message || 'Gagal logout. Silakan coba lagi.';
           this.presentToast(errorMessage);
           console.error('Logout error:', err);
-          this.router.navigateByUrl('/auth/login', { replaceUrl: true });
+          this.router.navigateByUrl('/login', { replaceUrl: true });
         },
       });
     });

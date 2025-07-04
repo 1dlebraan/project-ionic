@@ -66,7 +66,6 @@ export class AuthService {
     tempat_lahir: string,
     tanggal_lahir: string,
     jenis_kelamin: 'Laki - Laki' | 'Perempuan',
-    no_hp: string,
     alamat?: string
   ): Observable<any> {
     const data = {
@@ -78,7 +77,6 @@ export class AuthService {
       tempat_lahir,
       tanggal_lahir,
       jenis_kelamin,
-      no_hp,
       alamat,
     };
 
@@ -181,7 +179,10 @@ export class AuthService {
   }
 
   async isLoggedIn(): Promise<boolean> {
-    const token = await this.getToken();
-    return !!token;
+  if (!this.authToken) {
+    this.authToken = localStorage.getItem(this.JWT_KEY);
   }
+  return !!this.authToken;
+}
+
 }
